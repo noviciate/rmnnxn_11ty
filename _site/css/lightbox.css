@@ -1,0 +1,146 @@
+/* Prevent scroll when lightbox is open */
+body.lb-open {
+  overflow: hidden;
+}
+
+/* Overlay */
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+#lb-overlay.active {
+  display: flex;
+}
+
+/* Image wrapper */
+#lb-img-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+/* Image */
+#lb-img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  user-select: none;
+  position: relative;
+  z-index: 0;
+}
+
+/* Click zones */
+#lb-zone-left,
+#lb-zone-center,
+#lb-zone-right {
+  position: fixed;
+  top: 5%;
+  height: 90%;
+  z-index: 1001;
+}
+
+#lb-zone-left {
+  left: 0;
+  width: 33%;
+  cursor: w-resize;
+}
+
+#lb-zone-center {
+  left: 33%;
+  width: 34%;
+  cursor: pointer;
+}
+
+#lb-zone-right {
+  right: 0;
+  width: 33%;
+  cursor: e-resize;
+}
+
+/* Navigation arrows */
+#lb-prev,
+#lb-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 3rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1002;
+  user-select: none;
+  line-height: 1;
+}
+
+#lb-prev {
+  left: 1.5rem;
+}
+
+#lb-next {
+  right: 1.5rem;
+}
+
+#lb-prev.visible,
+#lb-next.visible {
+  opacity: 1;
+}
+
+/* Close button */
+#lb-close {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 2.2rem;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1003;
+  cursor: pointer;
+  user-select: none;
+}
+
+#lb-close.visible {
+  opacity: 1;
+}
+
+#lb-close:hover {
+  color: white;
+}
+
+/* Title with frosted glass */
+#lb-title {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+  padding: 0.35em 0.75em;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+#lb-title.fade-out {
+  opacity: 0;
+}

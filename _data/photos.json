@@ -1,0 +1,309 @@
+[
+  {
+    "filename": "/images/photos/flowers/2020_0408_02464300-01.jpg",
+    "title": "Bluesys",
+    "category": "flowers"
+  },
+  {
+    "filename": "/images/photos/flowers/2020_0628_20095300-01.jpg",
+    "title": "Magnolia Confetti",
+    "category": "flowers"
+  },
+  {
+    "filename": "/images/photos/flowers/2020_0629_20151900-01-01.jpg",
+    "title": "Waistline",
+    "category": "flowers"
+  },
+  {
+    "filename": "/images/photos/flowers/IMG_20200322_105800_285.jpg",
+    "title": "O'Keeffe'd Iris",
+    "category": "flowers"
+  },
+  {
+    "filename": "/images/photos/flowers/IMG_20200408_143254_167.jpg",
+    "title": "OK",
+    "category": "flowers"
+  },
+  {
+    "filename": "/images/photos/water/2020_0223_06013400-1.jpg",
+    "title": "ROC Glo-fi",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/2020_0306_03023900-01.jpg",
+    "title": "Indices",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/2020_0619_10523100-01.jpg",
+    "title": "Gritty Creek",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/2020_0630_21455100-01.jpg",
+    "title": "Affinity",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/5-1.jpg",
+    "title": "Grand Erie Yacht Club",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/91730013-1.jpg",
+    "title": "Grampa!",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/afternooncreek.jpg",
+    "title": "Afternoon Creek",
+    "category": "water",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/water/ blackcreek.jpg",
+    "title": "Black Creek 00",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/nothingnatural.jpg",
+    "title": "Nothing Natural",
+    "category": "water",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/water/IMG_20190908_080028358_HDR-1.jpg",
+    "title": "Morning Slabs",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/IMG_20191019_122051808_HDR-1.jpg",
+    "title": "Black Creek Yellowed",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/water/IMG_20200310_172523_331-1.jpg",
+    "title": "Memories of Fall Canal Rides",
+    "category": "water"
+  },
+  {
+    "filename": "/images/photos/rural/2020_0628_20202100-01.jpg",
+    "title": "June Outside Medina",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/2020_0703_03025500-01.jpg",
+    "title": "Spring Cleaning",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/2020_0703_03161100-02.jpg",
+    "title": "Four Horses Out to Pasture",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/cattlecafe.jpg",
+    "title": "Cattle Cafe",
+    "category": "rural",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/rural/2020_0703_03163400-01.jpg",
+    "title": "Mau-silo-leum",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/2-1.jpg",
+    "title": "Sunday Morning Fog",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/91730028-01.jpg",
+    "title": "Dawn-to-Husk",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/91730029.jpg",
+    "title": "Proud Ramshackle Barns",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/appleblossoms.jpg",
+    "title": "Canal Apple Blossoms (near Albion)",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/sempiternallight.jpg",
+    "title": "Sempiternal Light",
+    "category": "rural",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/rural/richscorner.jpg",
+    "title": "Rich's Corner",
+    "category": "rural",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/rural/IMG_20190908_070254723_HDR.jpg",
+    "title": "Foggy Morning Ride",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/IMG_20191108_094052779.jpg",
+    "title": "Dusted Apple Orchard",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/winterlakeorchard1.jpg",
+    "title": "Lakeside Dormant Orchard",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/rural/underwires.jpg",
+    "title": "Under the Wires",
+    "category": "rural"
+  },
+  {
+    "filename": "/images/photos/village/2020_0628_20182600-01.jpg",
+    "title": "Briggs Alley Survey of Textures",
+    "category": "village"
+  },
+  {
+    "filename": "/images/photos/village/2020_0703_03052500-01.jpg",
+    "title": "Faded Flag",
+    "category": "village"
+  },
+  {
+    "filename": "/images/photos/village/winterholley.jpg",
+    "title": "Winter Holley",
+    "category": "village"
+  },
+  {
+    "filename": "/images/photos/village/IMG_20200225_103817-01.jpg",
+    "title": "Twig Stratified",
+    "category": "village"
+  },
+  {
+    "filename": "/images/photos/village/sunsetsubdiv.jpg",
+    "title": "Sunset Subdivision",
+    "category": "village"
+  },
+  {
+    "filename": "/images/photos/urban/1-1.jpg",
+    "title": "Cobbs Hill \"Folly\"",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/2020_0627_22502800-01.jpg",
+    "title": "Kodak Viewfinder",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/2020_0629_20181200-01.jpg",
+    "title": "Peace to the Toys",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/2020_0703_02592800-01.jpg",
+    "title": "Eastside Values",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/3-1.jpg",
+    "title": "Behind the Confluence",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/bestrewn.jpg",
+    "title": "Bestrewn",
+    "category": "urban",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/urban/4-1.jpg",
+    "title": "Mt Hope Analogy",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/6-1.jpg",
+    "title": "Framed Fisherman at Lower Falls",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/91730010-1.jpg",
+    "title": "Uptown Cadillac",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/brownsrace.jpg",
+    "title": "Brown's Race (High Falls District)",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/IMG_20190928_134615882_HDR-1.jpg",
+    "title": "Fixin'",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/IMG_20190928_135719101_HDR.jpg",
+    "title": "Not an Agora",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/urban/treecity.jpg",
+    "title": "ROC Tree City",
+    "category": "urban"
+  },
+  {
+    "filename": "/images/photos/trails/2020_0302_22540700-01.jpg",
+    "title": "Transitional Descent",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/2020_0629_20131300-01.jpg",
+    "title": "Stipply / Highland Blues",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/alicebridge.jpg",
+    "title": "Alice Bridge",
+    "category": "trails",
+    "latest": true
+  },
+  {
+    "filename": "/images/photos/trails/91730027-1.jpg",
+    "title": "Sheets of Charlotte",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/91730033-01.jpg",
+    "title": "Columns Along Impasse",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/wakefulpeace.jpg",
+    "title": "Wakeful Peace",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/durandlake.jpg",
+    "title": "Durand Lake",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/mossyknoll-1.jpg",
+    "title": "Mossy Knoll",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/noongate.jpg",
+    "title": "Noonday Gate (Sunken Garden)",
+    "category": "trails"
+  },
+  {
+    "filename": "/images/photos/trails/ascensionpoint.jpg",
+    "title": "Ascension Point (Mt Hope)",
+    "category": "trails"
+  }
+]

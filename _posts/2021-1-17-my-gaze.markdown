@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "My gaze: origins"
+date:   2021-1-17 12:41:08 -0500
+categories: art photography ideas
+image: /images/previews/2020_0320_00103300-01.jpg
+---
+{% include "image-post.html" %}
+The gaze of the artist informs how they go about creating. In the work itself, it is the scaffold on which the artwork is built. It is baked into the work and this is important because if you appreciate the artist's gaze, you will like their work. 
+
+Take this, you may like the subject matter but dislike the approach of the artist. The result is that you do not like their work. Conversely, you may dislike the subject - you find it ugly even, but they somehow made you appreciate it. You may feel like you learned something or that they expressed something you thought had to be shared.
+
+Let's explore how the gaze comes about. I can only speak for myself, really:
+
+I think about how the idea or image appears in a visual space in my mind. The image renders itself in varying degrees of completeness and I am affected by it emotionally and intellectually. This affect is informed by my senses, life experiences, etc. I eventually reach a level of satisfaction with the perceived accuracy of the composition. I try to capture this image in a photograph, paint it onto canvas or whatever.
+
+![a study of light on my face](/images/previews/2020_0320_00103300-01.jpg)*Contemplation ... or rather practicing with lighting.*

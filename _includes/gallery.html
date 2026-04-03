@@ -1,0 +1,10 @@
+{% for item in galleries %}
+<div class="column"><div class="text-block">{{ item.title }}</div><a href="{{ item.filename }}"><img src="{{ item.filename }}" loading="lazy"/></a>
+</div>
+{% endfor %}
+
+<script type="text/javascript" src="/js/lightbox.js"></script>
+<link rel="stylesheet" href="/css/lightbox.css">
+<link rel="stylesheet" href="/css/columns.css">
+
+<script type="text/javascript" src="/js/filter.js"></script>
