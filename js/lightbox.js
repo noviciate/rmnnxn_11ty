@@ -106,16 +106,18 @@
   }
 
   // Close lightbox
-  function close() {
-    overlay.classList.remove("active");
-    hideChrome();
-    hideTitle();
-    setTimeout(function () {
-      document.body.classList.remove("lb-open");
-      document.body.style.top = "";
-      window.scrollTo(0, savedScrollY);
-    }, 300);
-  }
+    function close() {
+      overlay.classList.remove("active");
+      overlay.style.pointerEvents = "none"; // immediately block interaction
+      hideChrome();
+      hideTitle();
+      setTimeout(function () {
+        overlay.style.pointerEvents = ""; // reset after fade
+        document.body.classList.remove("lb-open");
+        document.body.style.top = "";
+        window.scrollTo(0, savedScrollY);
+      }, 300);
+    }
 
   // Show image at index
   function show(index) {
