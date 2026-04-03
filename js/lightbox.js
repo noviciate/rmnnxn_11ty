@@ -6,7 +6,8 @@
   var savedScrollY = 0;
   var titleTimer;
   var chromeTimer;
-  var EDGE_DEAD_ZONE = 30; // px from screen edge to ignore as browser gesture
+  var EDGE_DEAD_ZONE = 30;
+  var touchHandled = false; // flag to suppress click after touch
 
   // Build image list from currently visible gallery items
   function buildImageList() {
@@ -83,16 +84,10 @@
     title.classList.add("fade-out");
   }
 
-  // Get image boundaries for tap zone calculation
-  function getImgRect() {
-    return img.getBoundingClientRect();
-  }
-
   // Open lightbox
   function open(index, originLink) {
     buildImageList();
     current = index;
-    // Save scroll position before locking
     savedScrollY = window.scrollY;
     document.body.style.top = "-" + savedScrollY + "px";
     overlay.classList.add("active");
@@ -126,43 +121,53 @@
   function prev() { show(current - 1); }
   function next() { show(current + 1); }
 
-  // Overlay click handler — clean zone logic
-  overlay.addEventListener("click", function (e) {
-    // Close button handled by its own listener
-    if (e.target === closeBtn) return;
+  // Screen-relative zone handler — used for both click and touch taps
+  function handleZone(clientX, clientY) {
+    var third = window.innerWidth / 3;
 
-    // Tapping title dismisses it
-    if (e.target === title) {
+    // Check if tap is on title
+    var titleRect = title.getBoundingClientRect();
+    if (
+      clientX >= titleRect.left &&
+      clientX <= titleRect.right &&
+      clientY >= titleRect.top &&
+      clientY <= titleRect.bottom
+    ) {
       hideTitle();
       return;
     }
 
-    // Tapping image — calculate zones from actual image boundaries
-    if (e.target === img) {
-      var rect = getImgRect();
-      var third = rect.width / 3;
-      var relX = e.clientX - rect.left;
-
-      if (relX < third) {
-        prev();
-      } else if (relX > third * 2) {
-        next();
-      } else {
-        // Center — wake title and chrome
-        showTitle();
-        showChrome();
-      }
+    // Check if tap is on close button
+    var closeRect = closeBtn.getBoundingClientRect();
+    if (
+      clientX >= closeRect.left &&
+      clientX <= closeRect.right &&
+      clientY >= closeRect.top &&
+      clientY <= closeRect.bottom
+    ) {
+      close();
       return;
     }
 
-    // Anything else is dark margin — close
-    close();
-  });
+    // Screen thirds
+    if (clientX < third) {
+      prev();
+    } else if (clientX > third * 2) {
+      next();
+    } else {
+      // Center — wake title and chrome
+      showTitle();
+      showChrome();
+    }
+  }
 
-  // Close button
-  closeBtn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    close();
+  // Click handler — desktop only (suppressed after touch)
+  overlay.addEventListener("click", function (e) {
+    if (touchHandled) {
+      touchHandled = false;
+      return;
+    }
+    handleZone(e.clientX, e.clientY);
   });
 
   // Mouse movement reveals relevant chrome
@@ -208,20 +213,21 @@
 
   // Touch support
   overlay.addEventListener("touchstart", function (e) {
-    // Ignore multi-touch (pinch to zoom)
     if (e.touches.length > 1) return;
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
   }, { passive: true });
 
   overlay.addEventListener("touchend", function (e) {
-    // Ignore if fingers still on screen (end of pinch)
     if (e.touches.length > 0) return;
-    // Ignore if started in edge dead zone
     if (startX < EDGE_DEAD_ZONE || startX > window.innerWidth - EDGE_DEAD_ZONE) return;
 
-    var diffX = startX - e.changedTouches[0].clientX;
-    var diffY = startY - e.changedTouches[0].clientY;
+    var endX = e.changedTouches[0].clientX;
+    var endY = e.changedTouches[0].clientY;
+    var diffX = startX - endX;
+    var diffY = startY - endY;
+
+    touchHandled = true; // suppress the subsequent click event
 
     // Swipe down to close
     if (diffY < -60 && Math.abs(diffX) < Math.abs(diffY)) {
@@ -232,7 +238,11 @@
     // Horizontal swipe to navigate
     if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
       diffX > 0 ? next() : prev();
+      return;
     }
+
+    // Tap — use zone handler
+    handleZone(endX, endY);
   });
 
   // Wire up gallery clicks
