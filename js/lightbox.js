@@ -3,6 +3,7 @@
   var current = 0;
   var startX = 0;
   var startY = 0;
+  var savedScrollY = 0;
   var titleTimer;
   var chromeTimer;
   var EDGE_DEAD_ZONE = 30; // px from screen edge to ignore as browser gesture
@@ -48,7 +49,7 @@
   overlay.appendChild(closeBtn);
   document.body.appendChild(overlay);
 
-  // Show chrome (arrows, close button) briefly then fade
+  // Show chrome briefly then fade
   function showChrome() {
     arrowPrev.classList.add("visible");
     arrowNext.classList.add("visible");
@@ -82,20 +83,30 @@
     title.classList.add("fade-out");
   }
 
+  // Get image boundaries for tap zone calculation
+  function getImgRect() {
+    return img.getBoundingClientRect();
+  }
+
   // Open lightbox
   function open(index, originLink) {
     buildImageList();
     current = index;
-    show(current);
+    // Save scroll position before locking
+    savedScrollY = window.scrollY;
+    document.body.style.top = "-" + savedScrollY + "px";
     overlay.classList.add("active");
     document.body.classList.add("lb-open");
     if (originLink) originLink.blur();
+    show(current);
   }
 
   // Close lightbox
   function close() {
     overlay.classList.remove("active");
     document.body.classList.remove("lb-open");
+    document.body.style.top = "";
+    window.scrollTo(0, savedScrollY);
     hideChrome();
     hideTitle();
   }
@@ -115,53 +126,40 @@
   function prev() { show(current - 1); }
   function next() { show(current + 1); }
 
-  // Get image boundaries for tap zone calculation
-  function getImgRect() {
-    return img.getBoundingClientRect();
-  }
-
-  // Handle tap/click on overlay
+  // Overlay click handler — clean zone logic
   overlay.addEventListener("click", function (e) {
-    if (e.target === overlay) {
-      // Clicked dark margin outside image
-      close();
-      return;
-    }
+    // Close button handled by its own listener
+    if (e.target === closeBtn) return;
 
+    // Tapping title dismisses it
     if (e.target === title) {
-      // Tapping title dismisses it
       hideTitle();
       return;
     }
 
-    if (e.target === closeBtn) {
-      close();
-      return;
-    }
-
-    if (e.target === img || e.target === overlay) {
+    // Tapping image — calculate zones from actual image boundaries
+    if (e.target === img) {
       var rect = getImgRect();
       var third = rect.width / 3;
       var relX = e.clientX - rect.left;
 
-      if (relX < 0 || relX > rect.width) {
-        // Outside image horizontally — close
-        close();
-      } else if (relX < third) {
-        // Left third — previous
+      if (relX < third) {
         prev();
       } else if (relX > third * 2) {
-        // Right third — next
         next();
       } else {
-        // Center third — wake title and chrome
+        // Center — wake title and chrome
         showTitle();
         showChrome();
       }
+      return;
     }
+
+    // Anything else is dark margin — close
+    close();
   });
 
-  // Close button explicit handler
+  // Close button
   closeBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     close();
