@@ -3,9 +3,18 @@
   var current = 0;
   var startX = 0;
   var startY = 0;
+  var savedScrollY = 0;
   var titleTimer;
   var chromeTimer;
-  var EDGE_DEAD_ZONE = 30; // px from screen edge to ignore as browser gesture
+  var EDGE_DEAD_ZONE = 30;
+  var touchHandled = false;
+  var isZooming = false;
+
+  // Zone proportions
+  var SIDE_STRIP = 0.25;    // 25% of screen width for left/right nav
+  var BOTTOM_STRIP = 0.12;  // bottom 12% of screen height for close
+  var TOP_CORNER_H = 0.12;  // top 12% height for corner close
+  var TOP_CORNER_W = 0.25;  // right 25% width for corner close
 
   // Build image list from currently visible gallery items
   function buildImageList() {
@@ -48,7 +57,7 @@
   overlay.appendChild(closeBtn);
   document.body.appendChild(overlay);
 
-  // Show chrome (arrows, close button) briefly then fade
+  // Show chrome briefly then fade
   function showChrome() {
     arrowPrev.classList.add("visible");
     arrowNext.classList.add("visible");
@@ -86,19 +95,29 @@
   function open(index, originLink) {
     buildImageList();
     current = index;
-    show(current);
-    overlay.classList.add("active");
+    savedScrollY = window.scrollY;
+    document.body.style.top = "-" + savedScrollY + "px";
     document.body.classList.add("lb-open");
     if (originLink) originLink.blur();
+    show(current);
+    requestAnimationFrame(function () {
+      overlay.classList.add("active");
+    });
   }
 
   // Close lightbox
-  function close() {
-    overlay.classList.remove("active");
-    document.body.classList.remove("lb-open");
-    hideChrome();
-    hideTitle();
-  }
+    function close() {
+      overlay.classList.remove("active");
+      overlay.style.pointerEvents = "none"; // immediately block interaction
+      hideChrome();
+      hideTitle();
+      setTimeout(function () {
+        overlay.style.pointerEvents = ""; // reset after fade
+        document.body.classList.remove("lb-open");
+        document.body.style.top = "";
+        window.scrollTo(0, savedScrollY);
+      }, 300);
+    }
 
   // Show image at index
   function show(index) {
@@ -115,64 +134,67 @@
   function prev() { show(current - 1); }
   function next() { show(current + 1); }
 
-  // Get image boundaries for tap zone calculation
-  function getImgRect() {
-    return img.getBoundingClientRect();
-  }
+  // Zone handler — determines action from screen position
+  function handleZone(clientX, clientY) {
+    var W = window.innerWidth;
+    var H = window.innerHeight;
 
-  // Handle tap/click on overlay
-  overlay.addEventListener("click", function (e) {
-    if (e.target === overlay) {
-      // Clicked dark margin outside image
-      close();
-      return;
-    }
-
-    if (e.target === title) {
-      // Tapping title dismisses it
-      hideTitle();
-      return;
-    }
-
-    if (e.target === closeBtn) {
-      close();
-      return;
-    }
-
-    if (e.target === img || e.target === overlay) {
-      var rect = getImgRect();
-      var third = rect.width / 3;
-      var relX = e.clientX - rect.left;
-
-      if (relX < 0 || relX > rect.width) {
-        // Outside image horizontally — close
-        close();
-      } else if (relX < third) {
-        // Left third — previous
-        prev();
-      } else if (relX > third * 2) {
-        // Right third — next
-        next();
-      } else {
-        // Center third — wake title and chrome
-        showTitle();
-        showChrome();
+    // Check title tap first (only when visible)
+    if (!title.classList.contains("fade-out")) {
+      var titleRect = title.getBoundingClientRect();
+      if (
+        clientX >= titleRect.left && clientX <= titleRect.right &&
+        clientY >= titleRect.top && clientY <= titleRect.bottom
+      ) {
+        hideTitle();
+        return;
       }
     }
-  });
 
-  // Close button explicit handler
-  closeBtn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    close();
+    // Bottom strip — close
+    if (clientY > H * (1 - BOTTOM_STRIP)) {
+      close();
+      return;
+    }
+
+    // Top-right corner — close
+    if (clientY < H * TOP_CORNER_H && clientX > W * (1 - TOP_CORNER_W)) {
+      close();
+      return;
+    }
+
+    // Left strip — previous
+    if (clientX < W * SIDE_STRIP) {
+      prev();
+      return;
+    }
+
+    // Right strip — next
+    if (clientX > W * (1 - SIDE_STRIP)) {
+      next();
+      return;
+    }
+
+    // Center — wake title and chrome
+    showTitle();
+    showChrome();
+  }
+
+  // Click handler — desktop, suppressed after touch
+  overlay.addEventListener("click", function (e) {
+    if (touchHandled) {
+      touchHandled = false;
+      return;
+    }
+    handleZone(e.clientX, e.clientY);
   });
 
   // Mouse movement reveals relevant chrome
   overlay.addEventListener("mousemove", function (e) {
-    var third = window.innerWidth / 3;
-    var topZone = window.innerHeight * 0.15;
+    var W = window.innerWidth;
+    var topZone = window.innerHeight * TOP_CORNER_H;
 
-    if (e.clientY < topZone) {
+    if (e.clientY < topZone && e.clientX > W * (1 - TOP_CORNER_W)) {
       closeBtn.classList.add("visible");
       clearTimeout(chromeTimer);
       chromeTimer = setTimeout(function () {
@@ -180,14 +202,14 @@
       }, 1500);
     }
 
-    if (e.clientX < third) {
+    if (e.clientX < W * SIDE_STRIP) {
       arrowPrev.classList.add("visible");
       arrowNext.classList.remove("visible");
       clearTimeout(chromeTimer);
       chromeTimer = setTimeout(function () {
         arrowPrev.classList.remove("visible");
       }, 1500);
-    } else if (e.clientX > third * 2) {
+    } else if (e.clientX > W * (1 - SIDE_STRIP)) {
       arrowNext.classList.add("visible");
       arrowPrev.classList.remove("visible");
       clearTimeout(chromeTimer);
@@ -210,31 +232,52 @@
 
   // Touch support
   overlay.addEventListener("touchstart", function (e) {
-    // Ignore multi-touch (pinch to zoom)
-    if (e.touches.length > 1) return;
+    if (e.touches.length > 1) {
+      isZooming = true;
+      return;
+    }
+    if (isZooming) return;
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
   }, { passive: true });
 
   overlay.addEventListener("touchend", function (e) {
-    // Ignore if fingers still on screen (end of pinch)
-    if (e.touches.length > 0) return;
-    // Ignore if started in edge dead zone
-    if (startX < EDGE_DEAD_ZONE || startX > window.innerWidth - EDGE_DEAD_ZONE) return;
+    if (e.touches.length > 0) {
+      if (e.touches.length === 1) isZooming = true;
+      return;
+    }
 
-    var diffX = startX - e.changedTouches[0].clientX;
-    var diffY = startY - e.changedTouches[0].clientY;
+    // All fingers lifted
+    if (isZooming) {
+      isZooming = false;
+      touchHandled = true;
+      return;
+    }
 
-    // Swipe down to close
+    var endX = e.changedTouches[0].clientX;
+    var endY = e.changedTouches[0].clientY;
+    var diffX = startX - endX;
+    var diffY = startY - endY;
+
+    touchHandled = true;
+
+    // Swipe down to close — works anywhere on screen, overrides zones
     if (diffY < -60 && Math.abs(diffX) < Math.abs(diffY)) {
       close();
       return;
     }
 
+    // Ignore swipes starting in edge dead zone for horizontal nav
+    if (startX < EDGE_DEAD_ZONE || startX > window.innerWidth - EDGE_DEAD_ZONE) return;
+
     // Horizontal swipe to navigate
     if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
       diffX > 0 ? next() : prev();
+      return;
     }
+
+    // Tap — use zone handler
+    handleZone(endX, endY);
   });
 
   // Wire up gallery clicks

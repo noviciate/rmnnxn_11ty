@@ -3,7 +3,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("css");
+
   return {
+    dataTemplateEngine: "liquid",
     markdownTemplateEngine: "liquid",
     dir: {
       layouts: "_layouts",
@@ -11,4 +13,3 @@ module.exports = function(eleventyConfig) {
     }
   };
 };
-

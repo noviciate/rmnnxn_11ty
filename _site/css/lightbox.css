@@ -1,11 +1,13 @@
-/* Prevent scroll when lightbox is open */
+/* Prevent scroll when lightbox is open — position fixed needed for iOS Safari */
 body.lb-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
-/* Overlay */
+/* Overlay — always display flex, opacity drives visibility for fade */
 #lb-overlay {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.92);
@@ -13,10 +15,16 @@ body.lb-open {
   align-items: center;
   justify-content: center;
   cursor: default;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
 }
 
 #lb-overlay.active {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
 }
 
 /* Image — full width, constrained by height */

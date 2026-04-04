@@ -1,4 +1,6 @@
 module.exports = function() {
+  // Clear require cache to ensure fresh data on each build
+  delete require.cache[require.resolve('./photos.json')];
   const photos = require('./photos.json');
   
   const groups = {};

@@ -58,7 +58,7 @@
     "filename": "/images/photos/water/afternooncreek.jpg",
     "title": "Afternoon Creek",
     "category": "water",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/water/ blackcreek.jpg",
@@ -69,7 +69,7 @@
     "filename": "/images/photos/water/nothingnatural.jpg",
     "title": "Nothing Natural",
     "category": "water",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/water/IMG_20190908_080028358_HDR-1.jpg",
@@ -105,7 +105,7 @@
     "filename": "/images/photos/rural/cattlecafe.jpg",
     "title": "Cattle Cafe",
     "category": "rural",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/rural/2020_0703_03163400-01.jpg",
@@ -136,13 +136,13 @@
     "filename": "/images/photos/rural/sempiternallight.jpg",
     "title": "Sempiternal Light",
     "category": "rural",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/rural/richscorner.jpg",
     "title": "Rich's Corner",
     "category": "rural",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/rural/IMG_20190908_070254723_HDR.jpg",
@@ -218,7 +218,7 @@
     "filename": "/images/photos/urban/bestrewn.jpg",
     "title": "Bestrewn",
     "category": "urban",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/urban/4-1.jpg",
@@ -269,7 +269,7 @@
     "filename": "/images/photos/trails/alicebridge.jpg",
     "title": "Alice Bridge",
     "category": "trails",
-    "latest": true
+    "latest": "true"
   },
   {
     "filename": "/images/photos/trails/91730027-1.jpg",

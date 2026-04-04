@@ -14,6 +14,11 @@
   display: block;
 }
 
+/* Category pages show all columns without needing JS */
+.category-page .column {
+  display: block;
+}
+
 @media screen and (max-width: 712px) {
   .column.show {
     width: 100%;
