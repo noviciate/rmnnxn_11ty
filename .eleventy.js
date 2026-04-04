@@ -3,10 +3,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("css");
-
+  eleventyConfig.addCollection("writing", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("writing/*.md");
+  });
   return {
-    dataTemplateEngine: "liquid",
     markdownTemplateEngine: "liquid",
+    dataTemplateEngine: "liquid",
+    templateFormats: ["html", "md", "markdown", "liquid", "njk"],
     dir: {
       layouts: "_layouts",
       includes: "_includes"

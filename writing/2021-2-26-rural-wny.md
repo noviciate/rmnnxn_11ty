@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Rural Western NY part 1"
-date:   2021-2-26 22:01:08 -0500
-categories: photography
+title: "Rural Western NY part 1"
+date: 2021-02-26
+tags: writing
 image: /images/photos/rural/91730029.jpg
+permalink: /writing/rural-wny/
 ---
 
 *... as it pertains to the west side of Rochester in Monroe and Orleans counties.*

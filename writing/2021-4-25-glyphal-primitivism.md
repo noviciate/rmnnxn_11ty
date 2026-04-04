@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Glyphal Primitivism"
-date:   2021-4-25 12:01:08 -0500
-categories: photography
+title: "Glyphal Primitivism"
+date: 2021-04-25
+tags: writing
 image: /images/photos/water/glyphalprimitivism.jpg
+permalink: /writing/glyphal-primitivism/
 ---
 
 Here we have suggestions of abstract symbols in natural scenes. The characters of written language appear to us in an *organic* context.
@@ -16,4 +17,5 @@ In the above image, we instead see the symbols of notation: tally marks are imag
 ![blossoms](/images/photos/flowers/IMG_20200408_143254_167.jpg)
 *Titled "OK" because the blossoms suggest alphabetical letters.*
 
-![shaded creek and bright gold foliage](/images/photos/water/IMG_20191019_122051808_HDR-1.jpg) *The motif of leaning trunks mirrored on the creek. Strong lines and angles create arrows.*
+![shaded creek and bright gold foliage](/images/photos/water/IMG_20191019_122051808_HDR-1.jpg)
+*The motif of leaning trunks mirrored on the creek. Strong lines and angles create arrows.*
