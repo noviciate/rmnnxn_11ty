@@ -3,7 +3,7 @@ layout: post
 title: "Rural Western NY part 1"
 date: 2021-02-26
 tags: writing
-image: /images/photos/rural/91730029.jpg
+image: /images/photos/rural/proudramshacklebarns.jpg
 permalink: /writing/rural-wny/
 ---
 
@@ -13,7 +13,7 @@ The land is flat, save for occasional dips and inclines while sloping gently dow
 
 I think that there are scenes of visual intrigue to be had here, if you have a feel for subtlety.
 
-![barns and silo](/images/photos/rural/91730029.jpg)
+![barns and silo](/images/photos/rural/proudramshacklebarns.jpg)
 *Ramshackle barns and a silo sit proud atop a gentle hill at a cattle farm. Newer facility just behind them.*
 
 ![woodsy creek in the afternoon light](/images/photos/water/afternooncreek.jpg)
@@ -25,13 +25,13 @@ I think that there are scenes of visual intrigue to be had here, if you have a f
 ![blooming apple orchard along Erie Canal](/images/photos/rural/appleblossoms.jpg)
 *Blooming apple orchard along the Erie Canal.*
 
-![sunrise and fog over field](/images/photos/rural/2-1.jpg)
+![sunrise and fog over field](/images/photos/rural/sundaymorningfog.jpg)
 *Dips and and open fields hold the morning fog of spring and autumn.*
 
-![clearing trees around the farm](/images/photos/rural/2020_0703_03025500-01.jpg)
+![clearing trees around the farm](/images/photos/rural/springcleaning.jpg)
 *Spring cleaning.*
 
-![four horses out to pasture](/images/photos/rural/2020_0703_03161100-02.jpg)
+![four horses out to pasture](/images/photos/rural/fourhorsesouttopasture.jpg)
 *Four horses out to pasture.*
 
 You can peek photos tagged rural in my [gallery](/photos/rural/).
