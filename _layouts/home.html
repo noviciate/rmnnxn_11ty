@@ -74,7 +74,9 @@ layout: default
 .home-section-link .section-overlay {
   padding: 3rem 1.5rem 0.8rem;
   background: linear-gradient(to top, rgba(252,220,181,0.2) 0%, transparent 100%);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .home-section-link .section-overlay span {
@@ -82,8 +84,7 @@ layout: default
   letter-spacing: 0.8em;
   color: rgba(252,220,181,0.8);
   text-transform: none;
-  padding: 0 0.8em;
-  box-sizing: border-box;
+  margin-right: -0.8em; /* cancel the trailing letter-spacing */
 }
 
 /* ── Photos ── */
