@@ -2,6 +2,7 @@
 layout: page
 title: Paintings
 permalink: /paintings/
+fadein: true
 galleries:
    - filename: /images/paintings/bronzeface-final.jpg
      title: Bronze Face v3 (Charcoal/Oil/Digital)

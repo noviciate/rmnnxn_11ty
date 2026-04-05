@@ -2,6 +2,7 @@
 layout: default
 title: Photos
 permalink: /photos/
+fadein: true
 ---
 
 {% include "photoblurb.md" %}

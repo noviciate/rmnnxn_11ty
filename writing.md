@@ -2,6 +2,7 @@
 layout: default
 title: Writing
 permalink: /writing/
+fadein: true
 ---
 
 <style>

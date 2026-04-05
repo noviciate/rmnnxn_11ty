@@ -1,5 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+  
+    <style>
+  body { opacity: 0; transition: opacity 0.5s ease; }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.opacity = "1";
+  });
+</script>
+
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +38,22 @@
         
 <style>
 
+/* ── Page transition overlay ── */
+#page-fade {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 9999;
+}
+
+#page-fade.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 /* ── Portrait ── */
 .home-portrait {
   text-align: center;
@@ -40,6 +67,7 @@
   box-shadow: 2px 2px 10px rgba(0,0,0,0.18);
   outline: 2px solid rgba(255, 255, 255, 0.3);
   outline-offset: -10px;
+  transition: opacity 0.4s ease;
 }
 
 /* ── Sections ── */
@@ -76,7 +104,6 @@
 .section-overlay span {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
-  text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
   display: block;
 }
 
@@ -97,16 +124,18 @@
 .home-section-link .section-overlay {
   padding: 3rem 1.5rem 0.8rem;
   background: linear-gradient(to top, rgba(252,220,181,0.2) 0%, transparent 100%);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .home-section-link .section-overlay span {
   font-size: clamp(1.6rem, 5.5vw, 3rem);
   letter-spacing: 0.8em;
-  /* pull back the trailing letter-spacing so text stays centered */
-  text-indent: 0.8em;
+  margin-right: -0.8em;
   color: rgba(252,220,181,0.8);
   text-transform: none;
+  text-shadow: 0px 0px 12px rgba(78,65,46,0.9), 1px 1px 4px rgba(0,0,0,0.9);
 }
 
 /* ── Photos ── */
@@ -161,7 +190,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
   padding-right: 1.5rem;
   background: none;
 }
@@ -170,6 +199,7 @@
   font-size: clamp(1.4rem, 3.5vw, 2.4rem);
   letter-spacing: 0.12em;
   color: rgba(255,255,255,0.92);
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.85), 1px 1px 4px rgba(0,0,0,0.85);
 }
 
 /* ── Writing ── */
@@ -195,6 +225,7 @@
   font-size: clamp(1.8rem, 5vw, 4rem);
   letter-spacing: 0.15em;
   color: rgba(255,255,255,0.92);
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.85), 1px 1px 4px rgba(0,0,0,0.85);
 }
 
 /* ── Mobile ── */
@@ -227,9 +258,12 @@
 
 </style>
 
+<!-- Page fade overlay -->
+<div id="page-fade"></div>
+
 <!-- Portrait -->
 <div class="home-portrait">
-  <img src="/images/previews/2020_0320_00103300-01.jpg" alt="Self portrait" />
+  <img id="portrait" src="/images/previews/2020_0320_00103300-01.jpg" alt="Self portrait" />
 </div>
 
 <!-- Sections -->
@@ -272,8 +306,28 @@
 </div>
 
 <script>
-// Scroll-then-navigate for header nav links on homepage only
-document.querySelectorAll('.site-nav a.page-link').forEach(function(link) {
+// Portrait fade on scroll
+// Portrait parallax and fade on scroll
+var portrait = document.getElementById('portrait');
+window.addEventListener('scroll', function () {
+  var scrollY = window.scrollY;
+  var rect = portrait.getBoundingClientRect();
+  var visibleRatio = Math.max(0, Math.min(1, rect.bottom / portrait.offsetHeight));
+  portrait.style.opacity = visibleRatio;
+  portrait.style.transform = 'translateY(-' + scrollY * 0.4 + 'px)';
+}, { passive: true });
+
+// Page fade helper
+function fadeAndNavigate(href) {
+  var fade = document.getElementById('page-fade');
+  fade.classList.add('active');
+  setTimeout(function () {
+    window.location.href = href;
+  }, 250);
+}
+
+// Scroll-then-fade-then-navigate for header nav links on homepage only
+document.querySelectorAll('.site-nav a.page-link').forEach(function (link) {
   var href = link.getAttribute('href');
   var sectionMap = {
     '/paintings/': 'paintings',
@@ -282,15 +336,23 @@ document.querySelectorAll('.site-nav a.page-link').forEach(function(link) {
   };
   var sectionId = sectionMap[href];
   if (sectionId && document.getElementById(sectionId)) {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       e.preventDefault();
       var target = document.getElementById(sectionId);
-      target.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(function() {
-        window.location.href = href;
-      }, 400);
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () {
+        fadeAndNavigate(href);
+      }, 350);
     });
   }
+});
+
+// Section clicks also fade out before navigating
+document.querySelectorAll('.home-section-link, .writing-section-link, .photo-collage-link').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    fadeAndNavigate(this.getAttribute('href'));
+  });
 });
 </script>
 

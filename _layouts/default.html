@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {% if fadein %}
+    {% include "fadein.html" %}
+  {% endif %}
 
   {%- include "head.html" -%}
 
