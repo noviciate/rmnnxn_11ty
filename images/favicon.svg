@@ -17,16 +17,6 @@
    inkscape:export-filename="/home/roman/rmnnxn/favicon.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
-  <style>
-    path {
-      stroke: #000000;
-    }
-    @media (prefers-color-scheme: dark) {
-      path {
-        stroke: #ffffff !important;
-      }
-    }
-  </style>
   <metadata
      id="metadata202">
     <rdf:RDF>
@@ -795,3 +785,13 @@
        sodipodi:nodetypes="cc" />
   </g>
 </svg>
+<style>
+  path {
+    stroke: #000000;
+  }
+  @media (prefers-color-scheme: dark) {
+    path {
+      stroke: #ffffff !important;
+    }
+  }
+</style>

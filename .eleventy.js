@@ -3,6 +3,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("favicon.svg");
+  eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addCollection("writing", function(collectionApi) {
     return collectionApi.getFilteredByGlob("writing/*.md");
   });
