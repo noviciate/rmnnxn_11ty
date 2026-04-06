@@ -1,16 +1,41 @@
-/* ── CSS Custom Properties ── */
+/* ── CSS Custom Properties — Light Mode ── */
 :root {
   --color-bg: #fdfdfd;
+  --color-bg-header: white;
+  --color-bg-footer: white;
   --color-text: #111;
   --color-text-muted: #828282;
   --color-border: #e8e8e8;
   --color-link: #2a7ae2;
   --color-link-visited: #1756a9;
-  --color-header-bg: white;
   --color-header-shadow: rgba(0,0,0,0.1);
   --color-code-bg: #eef;
   --color-blockquote-border: #e8e8e8;
   --color-blockquote-text: #828282;
+  --logo-filter: none;
+}
+
+/* ── Dark Mode ── */
+@media (prefers-color-scheme: dark) {
+  /* Header shadow becomes more pronounced */
+  .site-header {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+  :root {
+    --color-bg: #1a1a1a;
+    --color-bg-header: #1c1a18;
+    --color-bg-footer: #1c1a18;
+    --color-text: #e0e0e0;
+    --color-text-muted: #888;
+    --color-border: #333;
+    --color-link: #6aabff;
+    --color-link-visited: #5090dd;
+    --color-header-shadow: rgba(0,0,0,0.4);
+    --color-code-bg: #2a2a2a;
+    --color-blockquote-border: #444;
+    --color-blockquote-text: #999;
+    --logo-filter: invert(1);
+  }
 }
 
 /* ── Reset ── */
@@ -130,13 +155,13 @@ table {
   margin-bottom: 30px;
   width: 100%;
   text-align: left;
-  color: #3f3f3f;
+  color: var(--color-text);
   border-collapse: collapse;
   border: 1px solid var(--color-border);
 }
 
 table tr:nth-child(even) {
-  background-color: #f7f7f7;
+  background-color: rgba(255,255,255,0.03);
 }
 
 table th, table td {
@@ -144,9 +169,8 @@ table th, table td {
 }
 
 table th {
-  background-color: #f0f0f0;
-  border: 1px solid #dedede;
-  border-bottom-color: #c9c9c9;
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-border);
 }
 
 table td {
@@ -182,7 +206,7 @@ table td {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--color-header-bg);
+  background-color: var(--color-bg-header);
   box-shadow: 0 1px 3px var(--color-header-shadow);
   border-bottom: 1px solid var(--color-border);
   min-height: 55.95px;
@@ -200,6 +224,13 @@ table td {
 
 .site-title:visited {
   color: #424242;
+}
+
+/* Logo invert in dark mode */
+img[data-attr="head-img"] {
+  width: 105px;
+  height: 50px;
+  filter: var(--logo-filter);
 }
 
 .site-nav {
@@ -259,17 +290,9 @@ table td {
   margin-bottom: 30px;
 }
 
-.post-content h2 {
-  font-size: 32px;
-}
-
-.post-content h3 {
-  font-size: 26px;
-}
-
-.post-content h4 {
-  font-size: 20px;
-}
+.post-content h2 { font-size: 32px; }
+.post-content h3 { font-size: 26px; }
+.post-content h4 { font-size: 20px; }
 
 @media screen and (max-width: 950px) {
   .post-content h2 { font-size: 28px; }
@@ -281,6 +304,7 @@ table td {
 .site-footer {
   border-top: 1px solid var(--color-border);
   padding: 30px 0;
+  background-color: var(--color-bg-footer);
 }
 
 .footer-inner {
