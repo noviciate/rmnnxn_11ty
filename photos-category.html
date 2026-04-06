@@ -6,6 +6,7 @@ pagination:
 permalink: /photos/{{ category }}/
 layout: default
 title: Photos
+fadein: true
 ---
 
 <div class="photos-page category-page">
@@ -41,8 +42,4 @@ title: Photos
   </div>
 </div>
 
-<link rel="stylesheet" href="/css/filter.css">
-<link rel="stylesheet" href="/css/lightbox.css">
-<link rel="stylesheet" href="/css/columns.css">
-<script src="/js/lightbox.js"></script>
-<script src="/js/filter.js"></script>
+{% include "gallery-assets.html" %}

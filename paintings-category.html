@@ -5,10 +5,12 @@ pagination:
   alias: category
 permalink: /paintings/{{ category }}/
 layout: default
-title: paintings
+title: Paintings
+fadein: true
 ---
 
 <div class="paintings-page category-page">
+  {% include "paintingsblurb.md" %}
 
   <div class="filter-bar">
     <div id="myBtnContainer">
@@ -33,8 +35,4 @@ title: paintings
   </div>
 </div>
 
-<link rel="stylesheet" href="/css/filter.css">
-<link rel="stylesheet" href="/css/lightbox.css">
-<link rel="stylesheet" href="/css/columns.css">
-<script src="/js/lightbox.js"></script>
-<script src="/js/filter.js"></script>
+{% include "gallery-assets.html" %}

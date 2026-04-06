@@ -4,7 +4,11 @@ title: Photos
 permalink: /photos/
 fadein: true
 ---
-
+<style>
+.post-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
+</style>
 {% include "photoblurb.md" %}
 
 <div class="filter-bar">
@@ -34,8 +38,4 @@ fadein: true
     {% endfor %}
 </div>
 
-<link rel="stylesheet" href="/css/filter.css">
-<link rel="stylesheet" href="/css/lightbox.css">
-<link rel="stylesheet" href="/css/columns.css">
-<script src="/js/lightbox.js"></script>
-<script src="/js/filter.js"></script>
+{% include "gallery-assets.html" %}

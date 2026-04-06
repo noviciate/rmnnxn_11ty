@@ -9,7 +9,7 @@ fadein: true
   font-family: 'Space Grotesk', sans-serif;
 }
 </style>
-I work on a concept in stages - usually starting with a charcoal/graphite sketch and then moving onto a digital study/painting. The final step is in physical media. Sometimes this process is in reverse or goes back and forth between media.
+{% include "paintingsblurb.md" %}
 
 <div class="filter-bar">
   <div id="myBtnContainer">
@@ -31,8 +31,4 @@ I work on a concept in stages - usually starting with a charcoal/graphite sketch
     {% endfor %}
 </div>
 
-<link rel="stylesheet" href="/css/filter.css">
-<link rel="stylesheet" href="/css/lightbox.css">
-<link rel="stylesheet" href="/css/columns.css">
-<script src="/js/lightbox.js"></script>
-<script src="/js/filter.js"></script>
+{% include "gallery-assets.html" %}
