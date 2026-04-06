@@ -14,8 +14,8 @@ Here we have suggestions of abstract symbols in natural scenes. The characters o
 
 In the above image, we instead see the symbols of notation: tally marks are imagined from distant tree trunks. The letter/numeral "X" from woody limbs emerging from the water. The scene is strongly segmented by various natural elements.
 
-![blossoms](/images/photos/flowers/IMG_20200408_143254_167.jpg)
+![blossoms](/images/photos/flowers/ok-flower.jpg)
 *Titled "OK" because the blossoms suggest alphabetical letters.*
 
-![shaded creek and bright gold foliage](/images/photos/water/IMG_20191019_122051808_HDR-1.jpg)
+![shaded creek and bright gold foliage](/images/photos/water/blackcreekyellowed.jpg)
 *The motif of leaning trunks mirrored on the creek. Strong lines and angles create arrows.*
