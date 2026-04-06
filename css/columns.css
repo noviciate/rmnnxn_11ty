@@ -27,6 +27,7 @@
 
 /* Style the images inside the grid */
 .column img {
+  width: 100%;
   opacity: 1; 
   cursor: pointer; 
   object-fit: cover;
