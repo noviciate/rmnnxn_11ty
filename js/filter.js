@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var btnContainer = document.getElementById("myBtnContainer");
   var more = document.getElementById("more");
 
+  // Detect current gallery base path automatically
+  var basePath = "/" + window.location.pathname.split("/").filter(Boolean)[0] + "/";
+
   function showMore() {
     if (more) {
       more.style.display = more.style.display === "none" ? "inline" : "none";
@@ -16,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.filterSelection = function (c, btn) {
       if (c === "latest" || c === "all") {
-        window.location.href = "/photos/";
+        window.location.href = basePath;
       } else {
-        window.location.href = "/photos/" + c + "/";
+        window.location.href = basePath + c + "/";
       }
     };
 
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Main photos page filter
+  // Main gallery page filter
   function filterSelection(c, btn) {
     var columns = document.getElementsByClassName("column");
     for (var i = 0; i < columns.length; i++) {
@@ -63,16 +66,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update URL
     if (c !== "all" && c !== "latest") {
-      history.pushState(null, "", "/photos/" + c + "/");
+      history.pushState(null, "", basePath + c + "/");
     } else {
-      history.pushState(null, "", "/photos/");
+      history.pushState(null, "", basePath);
     }
   }
 
   // Expose for onclick attributes
   window.filterSelection = filterSelection;
 
-  // Hide more panel initially on main photos page
+  // Hide more panel initially
   if (more) more.style.display = "none";
 
   // Initialize — show latest if any exist, otherwise show all

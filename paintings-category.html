@@ -1,0 +1,40 @@
+---
+pagination:
+  data: paintingcategories
+  size: 1
+  alias: category
+permalink: /paintings/{{ category }}/
+layout: default
+title: paintings
+---
+
+<div class="paintings-page category-page">
+
+  <div class="filter-bar">
+    <div id="myBtnContainer">
+  <!--    <button class="btn active" onclick="filterSelection('latest', this)">Latest</button> -->
+      <button class="btn" onclick="filterSelection('all', this)">All</button>
+      <button class="btn" onclick="filterSelection('finished', this)">Finished</button>
+      <button class="btn" onclick="filterSelection('studies', this)">Studies</button>
+    </div>
+  </div>
+
+  <div id="gallery-grid">
+    {% for item in paintings %}
+      {% if item.category == category %}
+        <div class="column {{ item.category }}">
+          <div class="text-block">{{ item.title }}</div>
+          <a href="{{ item.filename }}">
+            <img src="{{ item.filename }}" loading="lazy"/>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<link rel="stylesheet" href="/css/filter.css">
+<link rel="stylesheet" href="/css/lightbox.css">
+<link rel="stylesheet" href="/css/columns.css">
+<script src="/js/lightbox.js"></script>
+<script src="/js/filter.js"></script>
