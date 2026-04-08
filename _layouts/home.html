@@ -262,8 +262,9 @@ layout: default
 
 <!-- Portrait -->
 <div class="home-portrait">
-  <img id="portrait" src="/images/previews/IMG_20190929_101822592_HDR_crop.jpg" alt="Sky portrait" />
-<!--  <img id="portrait" src="/images/previews/2020_0320_00103300-01.jpg" alt="Self portrait" />-->
+  {% portraitImage "/images/previews/IMG_20190929_101822592_HDR_crop.jpg", "Sky portrait" %}
+<!--  <img id="portrait" src="/images/previews/IMG_20190929_101822592_HDR_crop.jpg" alt="Sky portrait" /> -->
+<!--  <img id="portrait" src="/images/previews/2020_0320_00103300-01.jpg" alt="Self portrait" /> -->
 </div>
 
 <!-- Sections -->
@@ -272,7 +273,8 @@ layout: default
   <!-- Paintings -->
   <div class="home-section" id="paintings">
     <a class="home-section-link" href="/paintings/">
-      <img src="/images/paintings/bronzeface-final.jpg" alt="Bronze Face" />
+      {% heroImage "/images/paintings/bronzeface-final.jpg", "Bronze Face" %}
+<!--      <img src="/images/paintings/bronzeface-final.jpg" alt="Bronze Face" /> -->
       <div class="section-overlay">
         <span>Paintings</span>
       </div>
@@ -283,9 +285,14 @@ layout: default
   <div class="home-section" id="photos">
     <a class="photo-collage-link" href="/photos/">
       <div class="photo-collage">
+        {% heroImage "/images/photos/trails/wakefulpeace.jpg", "Wakeful Peace" %}
+        {% heroImage "/images/photos/flowers/ok-flower.jpg", "OK" %}
+        {% heroImage "/images/photos/water/memoriesoffallcanalrides.jpg", "Memories of Fall Canal Rides" %}
+<!--
         <img src="/images/photos/trails/wakefulpeace.jpg" alt="Wakeful Peace" />
         <img src="/images/photos/flowers/ok-flower.jpg" alt="OK" />
         <img src="/images/photos/water/memoriesoffallcanalrides.jpg" alt="Memories of Fall Canal Rides" />
+-->
       </div>
       <div class="section-overlay">
         <span>Photos</span>
@@ -296,7 +303,8 @@ layout: default
   <!-- Writing -->
   <div class="home-section" id="writing">
     <a class="writing-section-link" href="/writing/">
-      <img src="/images/photos/water/glyphalprimitivism.jpg" alt="Glyphal Primitivism" />
+      {% heroImage "/images/photos/water/glyphalprimitivism.jpg", "Glyphal Primitivism" %}
+<!--      <img src="/images/photos/water/glyphalprimitivism.jpg" alt="Glyphal Primitivism" /> -->
       <div class="section-overlay">
         <span>Writing</span>
       </div>
