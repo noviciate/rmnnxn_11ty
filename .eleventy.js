@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("favicon.svg");
   eleventyConfig.addPassthroughCopy("favicon.png");
+  eleventyConfig.addPassthroughCopy("_redirects");
   eleventyConfig.addCollection("writing", function(collectionApi) {
     return collectionApi.getFilteredByGlob("writing/*.md");
   });
